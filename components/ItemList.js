@@ -6,7 +6,7 @@ function ItemList({ items }) {
   return (
     <ul>
       {items.map((item, idx) => (
-        <li key={idx}>{`${item} ${idx + 1}`}</li>
+        <li key={idx}>{item}</li>
       ))}
     </ul>
   );

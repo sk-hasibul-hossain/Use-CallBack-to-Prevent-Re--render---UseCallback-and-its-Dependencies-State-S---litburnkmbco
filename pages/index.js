@@ -1,22 +1,23 @@
-import { useState, useCallback, useEffect, useRef } from "react";
+import { useState, useCallback } from "react";
 import ItemList from "../components/ItemList";
 
 export default function Home() {
   const [items, setItems] = useState([]);
   const [message, setMessage] = useState("");
-  const optimize = useCallback(() => {
+
+  const addItemFun = useCallback(function handleItems() {
     setItems((oldValue) => {
-      return [...oldValue, "Item"];
+      return [...oldValue, `Item ${oldValue.length + 1}`];
     });
-    setMessage("Item added syccessfully!");
+    setMessage("Item added successfully!");
     setTimeout(() => {
       setMessage("");
     }, 3000);
-  }, [setItems]);
+  }, []);
 
   return (
     <div>
-      <button onClick={optimize}>Add Item</button>
+      <button onClick={addItemFun}>Add Item</button>
       <ItemList items={items} />
       {message && <p id="message">{message}</p>}
     </div>
